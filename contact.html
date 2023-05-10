@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Contact Form</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <h1>Contact Me</h1>
+
+  <div id="contact-form">
+    <form action="send-email.php" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required><br>
+      <input type="email" name="email" placeholder="Your Email" required><br>
+      <textarea name="message" placeholder="Your Message" required></textarea><br>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <?php
+  if (isset($_GET['status'])) {
+    $status = $_GET['status'];
+    if ($status === 'success') {
+      echo '<p class="success-message">Email sent successfully!</p>';
+    } elseif ($status === 'error') {
+      echo '<p class="error-message">Failed to send email. Please try again.</p>';
+    }
+  }
+  ?>
+
+</body>
+
+</html>
